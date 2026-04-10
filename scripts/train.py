@@ -73,11 +73,17 @@ def main():
             lr_scheduler_type = "linear",
             seed = 42,
             output_dir = config["output_dir"],
+
+            # Checkpointing ARGS
+            save_strategy = "steps",
+            save_steps = 50,
+            save_total_limit = 2,
+            load_best_model_at_end = False,
         ),
     )
 
     print("5. Starting training")
-    training_stats = trainer.train()
+    trainer_stats = trainer.train(resume_from_checkpoint=True) 
 
     print("6. Saving the LoRA adapter")
     model.save_pretrained(config["save_model_path"])
