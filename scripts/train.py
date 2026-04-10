@@ -1,3 +1,4 @@
+from unsloth import FastLanguageModel               # For loading the pre-trained language model
 import os               # For file and directory operations
 import yaml             # For reading configuration files
 import torch            # For PyTorch operations
@@ -5,7 +6,6 @@ import pandas as pd     # For data manipulation
 from datasets import Dataset                        # For handling datasets
 from transformers import TrainingArguments          # For setting up training configurations
 from trl import SFTTrainer                          # For supervised fine-tuning
-from unsloth import FastLanguageModel               # For loading the pre-trained language model
 
 def load_config(config_path = "configs/train.yaml"):
     with open(config_path, "r") as f:
@@ -53,7 +53,7 @@ def main():
     print("4. Setting up Trainer")
     trainer = SFTTrainer(
         model = model,
-        tokenizer = tokenizer,
+        processing_class = tokenizer,
         train_dataset = train_dataset,
         dataset_text_field = "text",
         max_seq_length = config["max_seq_length"],
