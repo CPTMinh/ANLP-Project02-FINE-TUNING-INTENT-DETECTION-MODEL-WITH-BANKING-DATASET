@@ -83,7 +83,18 @@ def main():
     )
 
     print("5. Starting training")
-    trainer_stats = trainer.train(resume_from_checkpoint=True) 
+    
+    # Automatically check if a checkpoint exists to resume from
+    resume = False
+    if os.path.exists(config["output_dir"]):
+        checkpoints = [d for d in os.listdir(config["output_dir"]) if d.startswith("checkpoint")]
+        if len(checkpoints) > 0:
+            resume = True
+            print("Found existing checkpoint, resuming training...")
+        else:
+            print("No checkpoint found, starting fresh...")
+            
+    trainer_stats = trainer.train(resume_from_checkpoint=resume) 
 
     print("6. Saving the LoRA adapter")
     model.save_pretrained(config["save_model_path"])
