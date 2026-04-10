@@ -11,13 +11,13 @@ def preprocess_text(text):
 def main():
     print("1. Loading the BANKING77 dataset")
     # Loading the dataset from Hugging Face's dataset hub
-    dataset = load_dataset("PolyAI/banking77")
+    dataset = load_dataset("banking77")
 
     # Convert to pandas DataFrames for easier manipulation
     df_train = dataset['train'].to_pandas()
     df_test = dataset['test'].to_pandas()
     
-    print("2. Sampling the dataset...")
+    print("2. Sampling the dataset")
     # The original dataset has over 10,000 training rows. 
     # We will sample 15% of the data to ensure training completes with available resources.
     # We use 'stratify' to ensure all 77 intent classes are proportionally represented in our subset.
@@ -35,7 +35,7 @@ def main():
         random_state=42
     )
 
-    print("3. Preprocessing text and verifying labels...")
+    print("3. Preprocessing text and verifying labels")
     # Apply basic cleaning
     sampled_train['text'] = sampled_train['text'].apply(preprocess_text)
     sampled_test['text'] = sampled_test['text'].apply(preprocess_text)
@@ -46,7 +46,7 @@ def main():
     sampled_train = sampled_train[['text', 'label']]
     sampled_test = sampled_test[['text', 'label']]
 
-    print("4. Saving splits to the 'sample_data' directory...")
+    print("4. Saving splits to the 'sample_data' directory")
     # Create the directory if it doesn't exist
     os.makedirs("sample_data", exist_ok=True)
 
