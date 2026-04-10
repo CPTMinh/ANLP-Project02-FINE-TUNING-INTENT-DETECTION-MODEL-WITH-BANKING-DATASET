@@ -4,7 +4,7 @@ max_seq_length: 128                       # Maximum sequence length (banking int
 num_labels: 77                            # BANKING77 has 77 distinct intent classes
 
 # Training Hyperparameters
-batch_size: 16                            # Batch size for training
+batch_size: 2                            # Batch size for training
 learning_rate: 2.0e-4                     # Learning rate
 optimizer: "adamw_8bit"                   # Optimizer (8-bit AdamW saves memory in Colab)
 epochs: 3                                 # Number of training epochs
