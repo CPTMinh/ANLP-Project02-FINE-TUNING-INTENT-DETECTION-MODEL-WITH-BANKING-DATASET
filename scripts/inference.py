@@ -70,7 +70,7 @@ class IntentClassification:
 if __name__ == "__main__":
     print("1. Initializing Inference Model")
     # Pass the CONFIG file path
-    classifier = IntentClassification(model_path="configs/train.yaml")
+    classifier = IntentClassification(model_path="configs/inference.yaml")
 
     # Test single inference
     test_message = "I lost my credit card yesterday, how do I freeze my account?"

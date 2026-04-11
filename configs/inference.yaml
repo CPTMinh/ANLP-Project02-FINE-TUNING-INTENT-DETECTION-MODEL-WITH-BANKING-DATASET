@@ -1,0 +1,9 @@
+# The path to the saved model checkpoint directory containing the LoRA adapters
+# (Ensure this matches the 'save_model_path' from your train.yaml or where it saved in Colab)
+save_model_path: "saved_model"
+
+# Maximum sequence length used during inference (should match training)
+max_seq_length: 128
+
+# Model settings to apply during inference
+load_in_4bit: true
