@@ -42,8 +42,11 @@ class IntentClassification:
             f"Intent ID: "
         )
         
-        # Tokenize and send to GPU
-        inputs = self.tokenizer([prompt], return_tensors="pt").to("cuda")
+        # Check if CUDA is available, otherwise use CPU
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        
+        # Tokenize and send to the correct device
+        inputs = self.tokenizer([prompt], return_tensors="pt").to(device)
         
         # Generate the response (we only need a few tokens for a number between 0 and 76)
         outputs = self.model.generate(
