@@ -1,1 +1,8 @@
-pip install datasets pandas scikit-learn
+datasets
+pandas
+scikit-learn
+pyyaml
+tqdm
+torch
+transformers
+peft
