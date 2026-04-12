@@ -31,7 +31,7 @@ You can watch the video demonstration of this project here: [Video Demo (Google 
 
 Because Unsloth is deeply integrated with Linux and CUDA, **running this project entirely on Google Colab (with a T4 GPU)** is highly recommended. You can run all steps sequentially using the `train.ipynb` notebook provided in this repository.
 
-1. **Open Google Colab:** Upload `train.ipynb` or open it directly, and ensure your Runtime is set to `T4 GPU`.
+1. **Open Google Colab:** Upload `train.ipynb` (Located in Google Drive along video demo)or open it directly, and ensure your Runtime is set to `T4 GPU`.
 2. **Install Dependencies:**
    ```python
    !pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
